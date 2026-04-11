@@ -15,6 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: sans-serif;
         }
 
         video {
@@ -24,14 +25,49 @@
             height: auto;
             object-fit: cover;
         }
+
+        /* Overlay to handle browser autoplay restrictions */
+        #unmute-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-    <video id="whopperVideo" autoplay loop muted playsinline>
+    <div id="unmute-overlay">CLICK TO WHOPPERWHOPPERWHOPPERWHOPPERWHOPPER</div>
+
+    <video id="whopperVideo" autoplay loop playsinline>
         <source src="whoper.mp4" type="video/mp4">
-        your web browser is shit and cant play it.
+        your web browser is too shit to launch the video.
     </video>
+
+    <script>
+        const video = document.getElementById('whopperVideo');
+        const overlay = document.getElementById('unmute-overlay');
+
+        // Start muted to ensure autoplay works
+        video.muted = true;
+
+        overlay.addEventListener('click', () => {
+            video.muted = false;
+            video.play();
+            overlay.style.display = 'none'; // Hide overlay after interaction
+        });
+    </script>
 
 </body>
 </html>
