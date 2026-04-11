@@ -1,65 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Universal Website</title>
+    <title>web browser test</title>
 
-    <style>
-        /* 1. Resetting defaults for consistency */
-        body { 
-            font-family: Arial, Helvetica, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: #ffffff;
-        }
-
-        /* 2. Layout: Use 'Floats' as a fallback for 'Flexbox' */
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 0 auto;
-            overflow: hidden; /* Clears floats for IE8 */
-        }
-
-        header {
-            background: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .main-content {
-            padding: 20px;
-            line-height: 1.5;
-        }
-
-        /* 3. Old Android Browser Fixes */
-        img {
-            max-width: 100%; /* Prevents images from breaking the layout on small screens */
-            height: auto;
-        }
+    <style type="text/css">
+        /* Basic Styles for Modern Browsers */
+        body { font-family: sans-serif; margin: 0; padding: 0; background: #eee; }
+        .wrapper { background: #fff; margin: 0 auto; max-width: 800px; }
+        .header { background: #333; color: #fff; padding: 20px; text-align: center; }
+        .content { padding: 20px; }
+        
+        /* Ensures images don't break old Android screens */
+        img { max-width: 100%; height: auto; }
     </style>
 </head>
-<body>
+<body bgcolor="#eeeeee">
 
-    <header>
-        <h1>Universal Site</h1>
-    </header>
-
-    <div class="container">
-        <div class="main-content">
-            <h2>It Works!</h2>
-            <p>This page is optimized for:</p>
-            <ul>
-                <li>Internet Explorer 8+</li>
-                <li>Old Android Browsers (2.3+)</li>
-                <li>Modern Chrome, Safari, and Firefox</li>
-            </ul>
-        </div>
-    </div>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center">
+                <table class="wrapper" border="0" cellpadding="0" cellspacing="0" width="800" bgcolor="#ffffff">
+                    <tr>
+                        <td class="header" bgcolor="#333333" align="center" style="padding: 40px; color: #ffffff;">
+                            <font size="6"><b>POTATO7726</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content" style="padding: 20px;">
+                            <font size="4" face="Arial, Helvetica, sans-serif">
+                                <h2>The Universal Website</h2>
+                                <p>This website is designed to work on:</p>
+                                <ul>
+                                    <li><b>Netscape / Internet Explorer 5+</b></li>
+                                    <li><b>Android Gingerbread (2.3) & older</b></li>
+                                    <li><b>All modern Smartphones & PC browsers</b></li>
+                                </ul>
+                                <p>By using HTML Tables and the <code>&lt;font&gt;</code> tag, we ensure even 25-year-old browsers can display this message.</p>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 
 </body>
 </html>
