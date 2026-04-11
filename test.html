@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Universal Website</title>
+
+    <style>
+        /* 1. Resetting defaults for consistency */
+        body { 
+            font-family: Arial, Helvetica, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #ffffff;
+        }
+
+        /* 2. Layout: Use 'Floats' as a fallback for 'Flexbox' */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden; /* Clears floats for IE8 */
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        /* 3. Old Android Browser Fixes */
+        img {
+            max-width: 100%; /* Prevents images from breaking the layout on small screens */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Universal Site</h1>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <h2>It Works!</h2>
+            <p>This page is optimized for:</p>
+            <ul>
+                <li>Internet Explorer 8+</li>
+                <li>Old Android Browsers (2.3+)</li>
+                <li>Modern Chrome, Safari, and Firefox</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
