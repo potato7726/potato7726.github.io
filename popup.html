@@ -4,30 +4,20 @@
     <meta charset="UTF-8">
     <title>idiot</title>
     <style>
-        /* 1. Reset defaults to prevent scrollbars */
         body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: black;
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            overflow: hidden; background-color: black;
         }
 
-        /* 2. Fix Video Visibility & Stretching */
         #idiotVideo {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            /* Center the video */
+            top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            width: auto; height: auto;
             transform: translate(-50%, -50%);
-            /* Prevents stretching, crops edges instead */
             object-fit: cover; 
-            z-index: 1; /* Ensure it's on top of the background */
+            z-index: 1;
         }
     </style>
 </head>
@@ -38,10 +28,17 @@
 
     <script>
         const playMedia = () => {
+            // 1. Play audio and unmute video
             document.getElementById('idiotAudio').play();
-            // Optional: unmute video too if you want both
-            // document.getElementById('idiotVideo').muted = false;
+            document.getElementById('idiotVideo').muted = false;
+
+            // 2. Call the MalwarePad init function
+            if (typeof init === "function") {
+                init();
+            }
         };
+
+        // Triggers chaos on first click or key press
         window.addEventListener('click', playMedia, { once: true });
         window.addEventListener('keydown', playMedia, { once: true });
     </script>
