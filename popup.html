@@ -2,49 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>You are an Idiot! (dot org)</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: white;
-            font-family: sans-serif;
-        }
-
-        video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            z-index: -1; 
-        }
-
-        #idiot {
-            font-size: 5vw;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-align: center;
-            pointer-events: none;
-        }
-    </style>
+    <title>Media Loop</title>
 </head>
-<body onload="init();">
+<body>
 
-    <p id="idiot">you are an idiot</p>
+    <video src=idiot/idiot!.mp4 autoplay loop muted playsinline>
+        Your browser does not support the video tag.
+    </video>
 
-    <audio id="idiotAudio" src="media/idiot!.mp3" autoplay loop></audio>
-
-    <video id="idiotVideo" src="media/idiot.mp4" autoplay loop muted playsinline></video>
+    <audio src=idiot/idiot!.mp3 autoplay loop>
+        Your browser does not support the audio tag.
+    </audio>
 
 </body>
 </html>
-<script src="idiot/main.js"></script>
+<script src="js/main.js"></script>
