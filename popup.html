@@ -1,4 +1,3 @@
-<script src="idiot/main.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,20 +32,10 @@
     </style>
 </head>
 <body>
-
     <video id="idiotVideo" src="idiot/idiot!.mp4" autoplay loop muted playsinline></video>
     <audio id="idiotAudio" src="idiot/idiot!.mp3" loop></audio>
 
-    <script>
-        const playMedia = () => {
-            document.getElementById('idiotAudio').play();
-            // Optional: unmute video too if you want both
-            // document.getElementById('idiotVideo').muted = false;
-        };
-        window.addEventListener('click', playMedia, { once: true });
-        window.addEventListener('keydown', playMedia, { once: true });
-    </script>
-
-
+    <!-- Move the script tag to the bottom -->
+    <script src="idiot/main.js"></script>
 </body>
 </html>
