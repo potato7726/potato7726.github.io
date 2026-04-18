@@ -3,17 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>idiot</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        /* This makes the video fill the screen without stretching */
+        video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            background-size: cover;
+            object-fit: cover; /* The "Anti-Stretch" property */
+        }
+    </style>
 </head>
 <body>
 
-    <video src=idiot/idiot!.mp4 autoplay loop muted playsinline>
-        Your browser does not support the video tag.
-    </video>
+    <video src="idiot/idiot!.mp4" autoplay loop muted playsinline></video>
 
-    <audio src=idiot/idiot!.mp3 autoplay loop>
-        Your browser does not support the audio tag.
-    </audio>
+    <audio id="idiotAudio" src="idiot/idiot!.mp3" loop></audio>
+
+    <script src="idiot/main.js"></script>
+
+    <script>
+        document.addEventListener('click', function() {
+            var audio = document.getElementById('idiotAudio');
+            audio.play();
+        }, { once: true }); // 'once: true' makes it only fire on the first click
+        
+        document.addEventListener('keydown', function() {
+            var audio = document.getElementById('idiotAudio');
+            audio.play();
+        }, { once: true });
+    </script>
 
 </body>
 </html>
-<script src="js/main.js"></script>
