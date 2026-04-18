@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>idiot! LOL</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: white;
+            text-align: center;
+            overflow: hidden; /* Prevents scrollbars if things bounce around */
+        }
+        video {
+            pointer-events: none; /* Makes the video "unclickable" so controls can't be forced open */
+            width: 600px;
+        }
+    </style>
+</head>
+<body onload="init();">
+    <p id="idiot">you are an idiot</p>
+    
+    <video id="idiotVideo" autoplay loop muted playsinline>
+        <source src=https://github.com/potato7726/potato7726.github.io/releases/download/idk/idiot.mp4" type="video/mp4">
+    </video>
+
+    <audio id="idiotAudio" src=idiot/"idiot!.mp3" loop></audio>
+
+    <div class="smiles">
+        <img src="media/img/smile-white.png" alt="">
+        <img src="media/img/smile-white.png" alt="">
+        <img src="media/img/smile-white.png" alt="">
+    </div>
+
+    <script src="idiot/main.js"></script>
+    
+    <script>
+        // Bypassing autoplay restrictions
+        function startExperience() {
+            var audio = document.getElementById('idiotAudio');
+            var video = document.getElementById('idiotVideo');
+            
+            audio.play();
+            video.muted = false; // Unmutes the video if it has sound
+            
+            // Optional: if the video and audio are the same duration, 
+            // this keeps them synced
+            video.currentTime = audio.currentTime; 
+        }
+
+        // Trigger on first click
+        document.addEventListener('click', startExperience, { once: true });
+    </script>
+</body>
+</html>
