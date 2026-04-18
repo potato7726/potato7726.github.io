@@ -4,38 +4,40 @@
     <meta charset="UTF-8">
     <title>idiot</title>
     <style>
-        /* 1. Reset defaults to prevent scrollbars */
         body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: black;
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            overflow: hidden; background-color: black;
         }
-
-        /* 2. Fix Video Visibility & Stretching */
-        #idiotVideo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            /* Center the video */
-            transform: translate(-50%, -50%);
-            /* Prevents stretching, crops edges instead */
-            object-fit: cover; 
-            z-index: 1; /* Ensure it's on top of the background */
+        video {
+            width: 100%; height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
-    <video id="idiotVideo" src="idiot/idiot!.mp4" autoplay loop muted playsinline></video>
-    <audio id="idiotAudio" src="idiot/idiot!.mp3" loop></audio>
 
-    <!-- Move the script tag to the bottom -->
-    <script src="idiot/main.js"></script>
+    <video id="v" src="idiot/idiot!.mp4" autoplay loop muted playsinline></video>
+    <audio id="a" src="idiot/idiot!.mp3" loop></audio>
+
+    <script src="js/main.js"></script>
+    <script>
+        // This is the "Master Switch"
+        // It waits for ANY click or ANY key press to start the chaos.
+        const startChaos = () => {
+            document.getElementById('a').play(); // Start the song
+            document.getElementById('v').muted = false; // Unmute video
+            
+            if (typeof init === "function") {
+                init(); // Launch your "You Are An Idiot" script
+            }
+
+            window.removeEventListener('click', startChaos);
+            window.removeEventListener('keydown', startChaos);
+        };
+
+        window.addEventListener('click', startChaos);
+        window.addEventListener('keydown', startChaos);
+    </script>
 </body>
 </html>
