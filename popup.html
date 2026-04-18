@@ -2,35 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Loop</title>
+    <title>You are an Idiot! (dot org)</title>
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Ensures the video covers the screen without scrollbars */
         body {
             margin: 0;
             padding: 0;
             background-color: #000;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            width: 100vw;
-            overflow: hidden;
+            color: white;
+            font-family: sans-serif;
         }
+
         video {
-            max-width: 100%;
-            max-height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
+            z-index: -1; 
+        }
+
+        #idiot {
+            font-size: 5vw;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            pointer-events: none;
         }
     </style>
 </head>
-<body>
+<body onload="init();">
 
-    <audio id="idiotAudio" src="idiot/idiot!.mp3" loop></audio>
+    <p id="idiot">you are an idiot</p>
 
-    <video id="idiotVideo" src="idiot/idiot.mp4" loop muted playsinline autoplay></video>
+    <audio id="idiotAudio" src="media/idiot!.mp3" autoplay loop></audio>
 
-    <script src="idiot/main.js"></script>
+    <video id="idiotVideo" src="media/idiot.mp4" autoplay loop muted playsinline></video>
 
 </body>
 </html>
+<script src="idiot/main.js"></script>
