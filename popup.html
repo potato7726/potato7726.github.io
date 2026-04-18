@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>idiot</title>
     <style>
+        /* 1. Reset defaults to prevent scrollbars */
         body, html {
             margin: 0;
             padding: 0;
@@ -13,22 +14,39 @@
             background-color: black;
         }
 
-        video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            display: block;
+        /* 2. Fix Video Visibility & Stretching */
+        #idiotVideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            /* Center the video */
+            transform: translate(-50%, -50%);
+            /* Prevents stretching, crops edges instead */
+            object-fit: cover; 
+            z-index: 1; /* Ensure it's on top of the background */
         }
     </style>
 </head>
 <body>
 
-    <video id="v" src="idiot/idiot!.mp4" autoplay loop muted playsinline></video>
-    <audio id="a" src="idiot/idiot!.mp3" loop></audio>
+    <video id="idiotVideo" src="idiot/idiot!.mp4" autoplay loop muted playsinline></video>
+    <audio id="idiotAudio" src="idiot/idiot!.mp3" loop></audio>
+
+    <script>
+        const playMedia = () => {
+            document.getElementById('idiotAudio').play();
+            // Optional: unmute video too if you want both
+            // document.getElementById('idiotVideo').muted = false;
+        };
+        window.addEventListener('click', playMedia, { once: true });
+        window.addEventListener('keydown', playMedia, { once: true });
+    </script>
 
     <script src="idiot/main.js"></script>
+
 </body>
 </html>
