@@ -1,3 +1,7 @@
+/* 
+    * Written by MalwarePad https://malwarepad.com
+*/
+
 if (top.location != location) {
   top.location.href = location.href;
 }
