@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Loop</title>
     <style>
-        /* Optional: Makes the video fill the screen */
         body {
             margin: 0;
             padding: 0;
@@ -14,10 +13,12 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden; /* Prevents scrollbars */
         }
         video {
             max-width: 100%;
             max-height: 100%;
+            outline: none; /* Removes any accidental focus borders */
         }
     </style>
 </head>
@@ -27,7 +28,7 @@
 
     <video id="idiotVideo" src="https://cdn.discordapp.com/attachments/1490852427719639120/1495073965176258730/idiot.mp4?ex=69e4eba2&is=69e39a22&hm=9965383aa2b6def128a32c6c5b89d4b36fef7027e53e47670fbb68aebcbfd1c9&" loop muted playsinline></video>
 
-    <script src=idiot/main.js></script>
+    <script src="idiot/main.js"></script>
 
 </body>
 </html>
